@@ -81,7 +81,7 @@ namespace APIkino.Controllers
 
                 var UserCartItems = cartItems.ConvertToDto(movies);
                
-                return Ok(UserCartItems);
+                return Ok(cartItems);
             }
             catch (Exception ex)
             {
@@ -147,6 +147,8 @@ namespace APIkino.Controllers
                 }
                 var MovieDto = AddMovie.convertionDTO(movie);
 
+               
+                
 
                 return CreatedAtAction(nameof(AddItem), new { id = MovieDto.Id }, MovieDto);
             }

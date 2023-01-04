@@ -1,4 +1,5 @@
 ﻿using APIkino.Data;
+using com.sun.xml.@internal.bind.v2.model.core;
 using KinoClass.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,20 @@ public class AuthenticationController : ControllerBase
                 Username = Request.Username,
                 Password = Request.Password,
             };
+
             _context.Users.Add(user);
+
+            await _context.SaveChangesAsync();
+
+            var userCART = new Cart
+            {
+                UserId = user.Id,
+
+                        };
+           
+
+            await _context.Cart.AddAsync(userCART);
+
             await _context.SaveChangesAsync();
 
 
@@ -91,11 +105,16 @@ public class AuthenticationController : ControllerBase
             //get our token 
             var token = this.GetToken(authClaim);
 
+           
+           
+           
+
             //return our token 
             return Ok(new
             {
                 token =new JwtSecurityTokenHandler().WriteToken(token),
                 Exception= token.ValidTo
+              
             });
         }
         catch (Exception ex)

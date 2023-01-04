@@ -8,9 +8,9 @@ namespace KinoClass.Models
 {
     public class CartItemToAddDto
     {
-        public int CartId { get; set; }
+    
+       public int CartId { get; set; }
         public int MovieId { get; set; }
-  
         public int mengde { get; set; }
 
 

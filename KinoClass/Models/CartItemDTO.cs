@@ -11,7 +11,7 @@ namespace KinoClass.Models
     {
         public int Id { get; set; }
         public int CartId { get; set; }
-
+       
         public int MovieId { get; set; } //movie Id
         public string MovieName { get; set; }
         public string Description { get; set; }

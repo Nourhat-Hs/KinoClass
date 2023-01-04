@@ -12,6 +12,8 @@ namespace APIkino.Repositories
         Task<CartItem> GetItem(int id);
         Task<IEnumerable<CartItem>> CartItems(int UserId);
         Task<CartItem> UpdateItem(int Id, CartItemMengdeUpdate cartItemMengdeUpdate);
-        
+       
+
+
     }
 }
