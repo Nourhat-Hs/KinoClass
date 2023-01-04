@@ -39,7 +39,7 @@ namespace APIkino.Repositories
                 
                 var Item = await (from movie in this.context.movies
                                   where cartItemToAddDto.MovieId == movie.Id
-                                  && cartItemToAddDto.mengde <movie.mengde
+                                  && cartItemToAddDto.mengde< movie.mengde
                     select new CartItem
                                   {
                                       
@@ -97,7 +97,6 @@ namespace APIkino.Repositories
             return item;
         }
 
-
         //getting a movie from the cart
         public async Task<CartItem> GetItem(int id)
         {
@@ -126,8 +125,24 @@ namespace APIkino.Repositories
             var item = await this.context.CartItem.FindAsync(Id);
             if (item != null)
             {
-                item.mengde = cartItemMengdeUpdate.mengde;
+                 item.mengde = cartItemMengdeUpdate.mengde;
                 await this.context.SaveChangesAsync();
+                return item;
+                /*
+               await (from movie in this.context.movies
+                                where cartItemMengdeUpdate.movieId == movie.Id
+                                && cartItemMengdeUpdate.mengde < movie.mengde
+                                select new CartItem
+                                {
+
+
+                                    MovieId = movie.Id,
+                                    mengde = cartItemMengdeUpdate.mengde,
+
+                                }).SingleOrDefaultAsync();
+              await this.context.SaveChangesAsync();
+              await this.context.SaveChangesAsync();
+              */
             }
             return null;
         }

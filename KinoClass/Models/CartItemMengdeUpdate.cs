@@ -10,6 +10,7 @@ namespace KinoClass.Models
     public class CartItemMengdeUpdate
     { 
         public int CartItemId { get; set; }
+      //  public int movieId { get; set; }
         public int mengde { get; set; }
     }
 }

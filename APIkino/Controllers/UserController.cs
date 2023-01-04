@@ -172,13 +172,14 @@ namespace APIkino.Controllers
                 if (cartItem == null)
                 {
                     _logger.LogError("the delete call to /api/user fieled");
-                    return NotFound();
+                    return NotFound("feil i shoping");
                 }
+
                 var movie = await this.repository.Geten(cartItem.Id);
                 if (movie == null)
                 {
                     _logger.LogError("the Delete call to /api/user fieled");
-                    return NotFound();
+                    return NotFound(" feil i movie");
                 }
                 var cartItemDto = cartItem.convertionDTO(movie);
                 return Ok(cartItemDto);
@@ -197,19 +198,19 @@ namespace APIkino.Controllers
         {
             try
             {
-                var cartItem = await this.shoping.UpdateItem(Id, cartUpdate);
-                if (cartItem == null)
+                var Item = await this.shoping.UpdateItem(Id, cartUpdate);
+                if (Item == null)
                 {
                     _logger.LogError("the update call to /api/user fieled");
-                    return NotFound();
+                    return NotFound("feil is shoping");
                 }
-                var movie = await this.repository.Geten(cartItem.MovieId);
+                var movie = await this.repository.Geten(Item.MovieId);
                 if (movie == null)
                 {
                     _logger.LogError("the Delete call to /api/user fieled");
-                    return NotFound();
+                    return NotFound("");
                 }
-                var cartItemDto = cartItem.convertionDTO(movie);
+                var cartItemDto = Item.convertionDTO(movie);
                 return Ok(cartItemDto);
             }
             catch(Exception ex)

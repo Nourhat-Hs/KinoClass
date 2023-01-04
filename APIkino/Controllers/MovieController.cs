@@ -78,7 +78,7 @@ namespace APIkino.Controllers
         [Route("{Id}")]
         [Authorize(Policy = sjekk.MustBeTheOwner)]
 
-        public async Task<ActionResult<Movies>> GetOne([FromRoute] int Id)
+        public async Task<ActionResult<Movies>> Geten([FromRoute] int Id)
         {
             
             try
