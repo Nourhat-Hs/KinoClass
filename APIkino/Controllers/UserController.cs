@@ -136,7 +136,7 @@ namespace APIkino.Controllers
                 var AddMovie = await this.shoping.AddItem(cartItemToAddDto);
                 if (AddMovie == null)
                 {
-                    return NoContent();
+                    return BadRequest("some thing went wrong");
                 }
                 var movie = await this.repository.Geten(AddMovie.MovieId);
                 if (movie == null)

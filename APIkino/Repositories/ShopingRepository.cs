@@ -36,10 +36,11 @@ namespace APIkino.Repositories
             {
 
                 // check if the movie exists with link quary
+                
                 var Item = await (from movie in this.context.movies
                                   where cartItemToAddDto.MovieId == movie.Id
-                                  
-                                  select new CartItem
+                                  && cartItemToAddDto.mengde <movie.mengde
+                    select new CartItem
                                   {
                                       
                                       CartId = cartItemToAddDto.CartId,
