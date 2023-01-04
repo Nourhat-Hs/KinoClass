@@ -81,7 +81,7 @@ namespace APIkino.Controllers
 
                 var UserCartItems = cartItems.ConvertToDto(movies);
                
-                return Ok(cartItems);
+                return Ok(UserCartItems);
             }
             catch (Exception ex)
             {
